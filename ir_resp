@@ -1,0 +1,21 @@
+import RPi.GPIO as io
+from time import sleep
+
+io.setmode(io.BOARD)
+
+IR_INPUT =12
+Led =18
+
+io.setup(IR_INPUT,io.IN)
+io.setup(Led,io.OUT)
+try:
+        while True:
+                Status = io.input(IR_INPUT)
+                print Status
+                io.output(Led,True)
+                sleep(0.25)
+                io.output(Led,False)
+                sleep(0.25)
+except:
+        io.cleanup()
+        print "Error"
